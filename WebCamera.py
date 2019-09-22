@@ -20,6 +20,6 @@ while True:  # Бесконечный цикл, в котором считыва
         break
     if cv2.getWindowProperty('Capturing video', cv2.WND_PROP_VISIBLE) < 1:  # при закрытии окна цикл прекращается
         break
-
+        
 cap.release()  # отключаемся от камеры
-cv2.destroyAllWindows()  # закоываем все окна, которые открылись этой программой
+cv2.destroyAllWindows()  # закываем все окна, которые открылись этой программой
