@@ -4,8 +4,13 @@ import datetime
 import Training
 import tkinter
 import logging
+import os
 
 
+if not os.path.exists('dataset'):
+    os.makedirs('dataset')
+if not os.path.exists('training'):
+    os.makedirs('training')
 logging.basicConfig(filename='face_recognizer.log', level=logging.INFO)
 logger = logging.getLogger('Main')
 logger.info('['+str(datetime.datetime.now())+'] - '+'Programm started')
