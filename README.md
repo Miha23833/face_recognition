@@ -45,14 +45,14 @@
   -------------
   Программа написана на python 3.7 на ОС Windows 10.
   Используемые библиотеки:
-    Opencv-contrib-python
-    datetime
-    sqlite3
-    tkinter
-    loggong   
-    numpy
-    PIL
-    os 
+    Opencv-contrib-python,
+    datetime,
+    sqlite3,
+    tkinter,
+    loggong,   
+    numpy,
+    PIL,
+    os.
 
 
   Ссылка на исходный код
