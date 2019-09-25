@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import datetime
 import logging
+import tkinter
 import cv2
 import os
 
@@ -36,6 +37,13 @@ def training():  # функция для вызова из модуля main
     try:
         recognizer.train(faces, np.array(ids))
     except cv2.error:
+        logger.error('[' + str(datetime.datetime.now()) + '] - ' + 'camera not found!')
+        root = tkinter.Tk()
+        root.geometry('200x50')
+        root.resizable(width=False, height=False)
+        not_f = tkinter.Label(root, text='Дополните базу \nданных лиц!')
+        not_f.place(x=45, y=10)
+        root.mainloop()
         logger.error('['+str(datetime.datetime.now())+'] - '+'Training not successed because training images not found')
         return None
 
