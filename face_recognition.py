@@ -6,6 +6,7 @@ import cv2
 
 
 def recognition():
+    DataBase.create_table()
     logging.basicConfig(filename='face_recognizer.log', level=logging.INFO)
     logger = logging.getLogger('face_recognition')
     logging.info('['+str(datetime.datetime.now())+'] - '+'START RECOGNITION')
@@ -15,7 +16,17 @@ def recognition():
         names.append(data[key])
 
     recognizer = cv2.face.LBPHFaceRecognizer_create()
-    recognizer.read('training/trainer.yml')
+    try:
+        recognizer.read('training/trainer.yml')
+    except cv2.error:
+        logger.error('[' + str(datetime.datetime.now()) + '] - ' + 'not found trainer.yml')
+        root = tkinter.Tk()
+        root.geometry('200x50')
+        root.resizable(width=False, height=False)
+        not_f = tkinter.Label(root, text='Сначала нужно\n обучить программу')
+        not_f.place(x=45, y=10)
+        root.mainloop()
+        return None
 
     cascade_path = 'haarcascade_frontalface_default.xml'  # Загрузка классификатора для обнаружения лиц - каскады Хаара
     face_cascade = cv2.CascadeClassifier(cascade_path)
